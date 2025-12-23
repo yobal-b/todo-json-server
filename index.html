@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TaskFlow</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>📝 To-Do</h1>
+    <p>Organize your day, one task at a time</p>
+    <button id="darkToggle">🌙</button>
+  </header>
+
+  <main class="container">
+
+    <form id="todoForm" class="card">
+      <h2>Add New Task</h2>
+
+      <input type="text" id="title" placeholder="Task title" required />
+      <textarea id="description" placeholder="Task description"></textarea>
+
+      <div class="row">
+        <input type="text" id="category" placeholder="Category" />
+        <input type="date" id="dueDate" />
+      </div>
+
+      <button type="submit">Add Task</button>
+    </form>
+
+    <section>
+      <h2>Your Tasks</h2>
+      <div id="todoList"></div>
+    </section>
+
+</main>
+
+  <script src="script.js"></script>
+</body>
+</html>
