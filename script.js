@@ -27,9 +27,6 @@ async function fetchTodos(selectedCategory = "") {
 }
 
 
-categoryFilter.addEventListener('change', (e) => {
-    fetchTodos(e.target.value);
-});
 
 
 function renderTodos(tasks) {
@@ -44,12 +41,15 @@ function renderTodos(tasks) {
                 <span style="font-size: 0.8rem">📅 ${task.dueDate}</span>
             </div>
             <div class="actions">
-                <button onclick="deleteTask('${task.id}')">🗑️</button>
+                <button onclick="editTask('${task.id}')">Edit</button>
+                <button onclick="completeTask('${task.id}')">Complete</button>
+                <button onclick="deleteTask('${task.id}')">Delete</button>
             </div>
         `;
         todoList.appendChild(div);
     });
 }
+
 
 
 todoForm.addEventListener('submit', async (e) => {
@@ -72,6 +72,53 @@ todoForm.addEventListener('submit', async (e) => {
     fetchTodos(categoryFilter.value); 
 });
 
+async function editTask(id) {
+    try {
+       
+        const response = await fetch(`${API_URL}/${id}`);
+        const task = await response.json();
+
+        
+        const newTitle = prompt("Edit title:", task.title);
+        if (newTitle === null) return;
+
+        const newDescription = prompt("Edit description:", task.description);
+        if (newDescription === null) return;
+
+        const newCategory = prompt("Edit category:", task.category);
+        if (newCategory === null) return;
+
+        const newDueDate = prompt("Edit due date (YYYY-MM-DD):", task.dueDate);
+        if (newDueDate === null) return;
+
+       
+        await fetch(`${API_URL}/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                title: newTitle,
+                description: newDescription,
+                category: newCategory,
+                dueDate: newDueDate
+            })
+        });
+
+        fetchTodos(categoryFilter.value);
+    } catch (error) {
+        console.error("Edit failed:", error);
+    }
+}
+
+categoryFilter.addEventListener('change', (e) => {
+    fetchTodos(e.target.value);
+});
+
+async function completeTask(id) {
+    await fetch(`${API_URL}/${id}`, {
+        method: 'DELETE'
+    });
+    fetchTodos(categoryFilter.value);
+}
 
 async function deleteTask(id) {
     await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
