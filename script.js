@@ -8,6 +8,10 @@ const todoForm = document.getElementById('todoForm');
 const todoList = document.getElementById('todoList');
 const categoryFilter = document.getElementById('categoryFilter');
 
+document.getElementById("darkToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
+
 
 async function fetchTodos(selectedCategory = "") {
     let url = API_URL;
