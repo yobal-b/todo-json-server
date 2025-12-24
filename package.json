@@ -1,0 +1,27 @@
+{
+  "name": "todo-json-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scripts": {
+      "backend": "json-server --watch db.json --port 5500"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yobal-b/todo-json-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yobal-b/todo-json-server/issues"
+  },
+  "homepage": "https://github.com/yobal-b/todo-json-server#readme",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
+}

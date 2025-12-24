@@ -1,0 +1,20 @@
+{
+  "todos": [
+    {
+      "id": "8b08",
+      "title": "Mop the floor",
+      "description": "the whole house",
+      "category": "Personal",
+      "dueDate": "2025-12-25",
+      "completed": false
+    },
+    {
+      "id": "a634",
+      "title": "Do web project",
+      "description": "using json server",
+      "category": "urgent",
+      "dueDate": "2025-12-27",
+      "completed": false
+    }
+  ]
+}
