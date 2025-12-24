@@ -1,3 +1,7 @@
+document.getElementById("darkToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
+
 const API_URL = 'http://localhost:3000/todos';
 
 const todoForm = document.getElementById('todoForm');
